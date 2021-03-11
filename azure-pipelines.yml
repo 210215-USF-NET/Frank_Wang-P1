@@ -19,7 +19,12 @@ steps:
 - task: DotNetCoreCLI@2
   inputs:
     command: 'build'
-    projects: '**/Revature Training/Frank_Wang-P1/*.sln'
+    projects: '**/*.sln'
+
+- task: DotNetCoreCLI@2
+  inputs:
+    command: 'publish'
+    publishWebProjects: true
     
 - task: AzureRmWebAppDeployment@4
   inputs:
