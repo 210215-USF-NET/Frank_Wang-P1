@@ -18,7 +18,7 @@ steps:
 - task: DotNetCoreCLI@2
   inputs:
     command: 'build'
-    projects: '../Frank_Wang-P1/*.sln'
+    projects: '**/Frank_Wang-P1/*.sln'
     
 - task: AzureRmWebAppDeployment@4
   inputs:
