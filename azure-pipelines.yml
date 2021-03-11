@@ -15,7 +15,7 @@ steps:
     organization: '210215-usf-net'
     scannerMode: 'MSBuild'
     projectKey: '210215-USF-NET_Frank_Wang-P1'
-    projectName: 'FWP1'
+    projectName: 'Frank_Wang-p1'
 # Build and test ASP.NET Core projects targeting the full .NET Framework.
 # Add steps that publish symbols, save build artifacts, and more:
 # https://docs.microsoft.com/azure/devops/pipelines/languages/dotnet-core
