@@ -16,25 +16,25 @@ steps:
     scannerMode: 'MSBuild'
     projectKey: '210215-USF-NET_Frank_Wang-P1'
     projectName: 'Frank_Wang-p1'
-# Build and test ASP.NET Core projects targeting the full .NET Framework.
-# Add steps that publish symbols, save build artifacts, and more:
-# https://docs.microsoft.com/azure/devops/pipelines/languages/dotnet-core
+
 
 - task: DotNetCoreCLI@2
   inputs:
     command: 'build'
     projects: $(solution)
-- task: SonarCloudAnalyze@1
-- task: SonarCloudPublish@1
-  inputs:
-    pollingTimeoutSec: '300'
-
 - task: DotNetCoreCLI@2
   inputs:
     command: 'publish'
     zipAfterPublish: true
     publishWebProjects: true
     
+
+- task: SonarCloudAnalyze@1
+- task: SonarCloudPublish@1
+  inputs:
+    pollingTimeoutSec: '300'
+
+
     
 - task: AzureRmWebAppDeployment@4
   inputs:
