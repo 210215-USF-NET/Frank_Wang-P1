@@ -18,14 +18,14 @@ namespace StoreMVC
             CreateHostBuilder(args).Build().Run();
 
             Log.Logger = new LoggerConfiguration()
-                .WriteTo.File(new CompactJsonFormatter(), "logs.json")
+                .WriteTo.File(new CompactJsonFormatter(), "../SystemLog.json")
                 .CreateLogger();
-            Log.Verbose("Verbose log message");
-            Log.Debug("Debug log message");
-            Log.Information("Information log message");
-            Log.Warning("Warning log message");
-            Log.Error("Error log Message");
-            Log.Fatal("Fatal log message");
+            //Log.Verbose("Verbose log message");
+            //Log.Debug("Debug log message");
+            //Log.Information("Information log message");
+            //Log.Warning("Warning log message");
+            //Log.Error("Error log Message");
+           //Log.Fatal("Fatal log message");
         }
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>

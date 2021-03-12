@@ -21,17 +21,33 @@ namespace StoreDL
         }
 
         public DbSet<Customer> Customers { get; set; }
+        public DbSet<Location> Locations { get; set; }
+        public DbSet<Product> Products { get; set; }
+        public DbSet<Inventory> Inventories { get; set; }
         public DbSet<Order> Orders { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Customer>()
-                .Property(Customer => Customer.PhoneNumber)
+                .Property(Customer => Customer.Id)
                 .ValueGeneratedOnAdd();
-            modelBuilder.Entity<Customer>()
-                .HasOne(Customer => Customer.FirstName)
-                .WithOne()
-                .OnDelete(DeleteBehavior.Cascade);
+
+            modelBuilder.Entity<Location>()
+                .Property(location => location.Id)
+                .ValueGeneratedOnAdd();
+
+            modelBuilder.Entity<Product>()
+                .Property(product => product.Id)
+                .ValueGeneratedOnAdd();
+
+            modelBuilder.Entity<Inventory>()
+               .Property(Inventory => Inventory.Id)
+               .ValueGeneratedOnAdd();
+
+            modelBuilder.Entity<Order>()
+               .Property(order => order.Id)
+               .ValueGeneratedOnAdd();
+
         }
     }
 }

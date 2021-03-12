@@ -11,7 +11,7 @@ namespace StoreModels
         private string firstName;
         private string lastName; 
         private string phoneNumber;
-        private int customerID;
+        //private int customerID;
 
         public string FirstName 
         { 
@@ -52,7 +52,9 @@ namespace StoreModels
             }
         }
 
-        public int CustomerId { get; set; }
+        public int Id { get; set; }
+        //public int CustomerID { get; set; }
+ 
         public override string ToString() => $"Customer Details:\n\tName: {this.FirstName} {this.LastName} \n\tPhone: {this.PhoneNumber}";
 
 
