@@ -1,4 +1,4 @@
-﻿@model IEnumerable<StoreModels.Customer>
+﻿@model IEnumerable<StoreMVC.Models.CustomerIndexVM>
 
 @{
     ViewData["Title"] = "Add a Customer";
@@ -7,7 +7,7 @@
 <h1>Index</h1>
 
 <p>
-    <a asp-action="Create">Add a Customer to the talbe</a>
+    <a asp-action="Create">Add a Customer to the table</a>
 </p>
 <table class="table">
     <thead>
@@ -21,8 +21,8 @@
             <th>
                 @Html.DisplayNameFor(model => model.PhoneNumber)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Id)
+           @*@ <th>
+                @Html.DisplayNameFor(model => model.Id)*@
             </th>
 
             <th></th>
@@ -40,11 +40,11 @@
             <td>
                 @Html.DisplayFor(modelItem => item.PhoneNumber)
             </td>
-            <td>
+           @*@ <td>
                 @Html.DisplayFor(modelItem => item.Id)
-            </td>
+            </td>*@
             <td>
-                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+               @*@ @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |*@
                 @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
                 @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
             </td>
