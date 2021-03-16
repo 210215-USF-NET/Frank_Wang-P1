@@ -10,7 +10,7 @@ namespace StoreMVC.Models
     public class InventoryCRVM
     {
         public int ProductId { get; set; }
-        public int InventoryName { get; set; }
+        public string InventoryName { get; set; }
         public int InventoryPrice { get; set; }
         public int InventoryQuantity { get; set; }
         public int LocationId { get; set; }

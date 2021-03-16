@@ -11,7 +11,7 @@ namespace StoreMVC.Models
     {
         public int LocationId { get; set; }
         public int ProductId { get; set; }
-        public int InventoryName { get; set; }
+        public string InventoryName { get; set; }
         public int InventoryPrice { get; set; }
         public int InventoryQuantity { get; set; }
         
