@@ -5,59 +5,70 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using StoreBL;
+using StoreMVC.Models;
 
 namespace StoreMVC.Controllers
 {
-    public class StoreController : Controller
+    public class LocationController : Controller
     {
         private IStoreBL _storeBL;
-        public StoreController(IStoreBL storeBL)
-        {
-            _storeBL = storeBL;
-        }
-        
-        // Actions are public methods in controllers that respond to client request
-        //
-        // GET: StoreController
+        private IMapper _mapper;
+    
+    public LocationController(IStoreBL storeBL, IMapper mapper)
+    {
+        _storeBL = storeBL;
+        _mapper = mapper;
+    }
+        // GET: LocationController
         public ActionResult Index()
         {
-            return View();
+            return View(_storeBL.GetLocations().Select(location => _mapper.cast2LocationIndexVM(location)).ToList());
         }
 
-        // GET: StoreController/Details/5
-        public ActionResult Details(int id)
+        // GET: LocationController/Details/5
+        public ActionResult Details(string name)
         {
-            return View();
+            return View(_mapper.cast2LocationCRVM(_storeBL.GetLocationByName(name)));
         }
 
-        // GET: StoreController/Create
+
+
+
+
+
+        // GET: LocationController/Create
         public ActionResult Create()
         {
-            return View();
+            return View("CreateLocation");
         }
 
-        // POST: StoreController/Create
+        // POST: LocationController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        public ActionResult Create(LocationCRVM newLocation)
         {
-            try
+            if (ModelState.IsValid)
             {
-                return RedirectToAction(nameof(Index));
+                try
+                {
+                    _storeBL.AddLocation(_mapper.cast2Location(newLocation));
+                    return RedirectToAction(nameof(Index));
+                }
+                catch
+                {
+                    return View();
+                }
             }
-            catch
-            {
-                return View();
-            }
-        }
+            return View();
+        }        
 
-        // GET: StoreController/Edit/5
+        // GET: LocationController/Edit/5
         public ActionResult Edit(int id)
         {
             return View();
         }
 
-        // POST: StoreController/Edit/5
+        // POST: LocationController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(int id, IFormCollection collection)
@@ -72,13 +83,13 @@ namespace StoreMVC.Controllers
             }
         }
 
-        // GET: StoreController/Delete/5
+        // GET: LocationController/Delete/5
         public ActionResult Delete(int id)
         {
             return View();
         }
 
-        // POST: StoreController/Delete/5
+        // POST: LocationController/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Delete(int id, IFormCollection collection)

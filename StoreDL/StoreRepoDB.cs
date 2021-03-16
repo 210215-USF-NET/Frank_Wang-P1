@@ -31,15 +31,16 @@ namespace StoreDL
 
         public Customer GetCustomerByName(string name)
         {
-            return _context.Customers.
-            Include("Phonenumber")
+            return _context.Customers
             .AsNoTracking()
             .FirstOrDefault(customer => customer.PhoneNumber == name);
         }
 
         public Inventory AddInventory(Inventory newInventory)
         {
-            throw new NotImplementedException();
+            _context.Inventories.Add(newInventory);
+            _context.SaveChanges();
+            return newInventory;
         }
 
         public Location AddLocation(Location newLocation)
@@ -77,12 +78,14 @@ namespace StoreDL
 
         public List<Inventory> GetInventories()
         {
-            throw new NotImplementedException();
+            return _context.Inventories.Select(inventory => inventory).ToList();
         }
 
         public Location GetLocationByName(string name)
         {
-            throw new NotImplementedException();
+            return _context.Locations
+            .AsNoTracking()
+            .FirstOrDefault(location => location.LocationAddress == name);
         }
 
         public List<Location> GetLocations()
@@ -100,7 +103,9 @@ namespace StoreDL
 
         public Product GetProductByName(string name)
         {
-            throw new NotImplementedException();
+            return _context.Products
+            .AsNoTracking()
+            .FirstOrDefault(product => product.ProductName == name);
         }
 
         public List<Product> GetProducts()
@@ -109,6 +114,14 @@ namespace StoreDL
             .AsNoTracking()
             .Select(product => product)
             .ToList();
+
+
+        }
+        public Product DeleteProduct(Product product2BDeleted)
+        {
+            _context.Products.Remove(product2BDeleted);
+            _context.SaveChanges();
+            return product2BDeleted;
         }
     }
 }

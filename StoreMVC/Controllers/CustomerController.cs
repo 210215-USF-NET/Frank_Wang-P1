@@ -27,9 +27,9 @@ namespace StoreMVC.Controllers
         }
 
         // GET: CustomerController/Details/5
-        public ActionResult Details(int id)
+        public ActionResult Details(string name)
         {
-            return View();
+            return View(_mapper.cast2CustomerCRVM(_storeBL.GetCustomerByName(name)));
         }
 
         // GET: CustomerController/Create
@@ -80,8 +80,12 @@ namespace StoreMVC.Controllers
         }
 
         // GET: CustomerController/Delete/5
-        public ActionResult Delete(int id)
+        public ActionResult Delete(string name)
         {
+            //add delete function
+            
+            //_storeBL.DeleteCustomer(_storeBL.GetCustomerByName(name));
+            //return RedirectToAction(nameof(Index));
             return View();
         }
 

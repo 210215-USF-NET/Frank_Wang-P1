@@ -24,5 +24,6 @@ namespace StoreBL
         List<Product> GetProduct();
         Product AddProduct(Product newProduct);
         Product GetProductByName(string name);
+        Product DeleteProduct(Product product2BDeleted);
     }
 }

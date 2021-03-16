@@ -82,6 +82,10 @@ namespace StoreBL
         {
             return _repo.GetProducts();
         } 
+        public Product DeleteProduct(Product product2BDeleted)
+        {
+            return _repo.DeleteProduct(product2BDeleted);
+        }
 
     }
 }
